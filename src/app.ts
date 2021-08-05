@@ -7,7 +7,7 @@ import { User } from './models/models';
 app.get('/', async (req: Request, res: Response)=> {
     const token: any = req.query.token;
     if(!(token===process.env.REG_SECRET)){
-        res.json({success: false});
+        return res.json({success: false});
     }
     const users = await User.find({});
     res.json({success: true, count: users.length});
